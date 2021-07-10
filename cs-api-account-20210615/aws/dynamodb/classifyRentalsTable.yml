@@ -1,0 +1,27 @@
+ClassifyRentalsTable:
+  Type: AWS::DynamoDB::Table
+  Properties:
+    TableName: ClassifyRentals-${self:provider.stage}
+    BillingMode: PAY_PER_REQUEST
+    AttributeDefinitions:
+      - AttributeName: Pk
+        AttributeType: S
+      - AttributeName: Sk
+        AttributeType: S
+      - AttributeName: Email
+        AttributeType: S
+    KeySchema:
+      - AttributeName: Pk
+        KeyType: HASH
+      - AttributeName: Sk
+        KeyType: RANGE
+    GlobalSecondaryIndexes:
+      - IndexName: emailIdx
+        KeySchema:
+          - AttributeName: Email
+            KeyType: HASH
+          - AttributeName: Sk
+            KeyType: RANGE
+        Projection:
+          ProjectionType: ALL
+

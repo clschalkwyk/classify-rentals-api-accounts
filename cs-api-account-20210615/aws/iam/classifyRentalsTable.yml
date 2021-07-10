@@ -1,0 +1,13 @@
+ClassifyRentalsTableIAM:
+  Effect: Allow
+  Action:
+    - dynamodb:PutItem
+    - dynamodb:Scan
+    - dynamodb:GetItem
+    - dynamodb:UpdateItem
+    - dynamodb:DeleteItem
+    - dynamodb:Query
+    - dynamodb:BatchGetItem
+  Resource:
+    - ${self:custom.ClassifyRentalsTable.arn}
+    - !Join ['/', ['${self:custom.ClassifyRentalsTable.arn}', 'index', 'emailIdx']]

@@ -39,7 +39,7 @@ type Response events.APIGatewayProxyResponse
 
 // Handler is our lambda handler invoked by the `lambda.Start` function call
 func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (Response, error) {
-	tableName := os.Getenv("CS_DB")
+	tableName := os.Getenv("CLASSIFY_RENTALS_DB")
 	var buf bytes.Buffer
 
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
@@ -67,7 +67,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (Respon
 	// Search for existing user
 	result, err := svc.Query(&dynamodb.QueryInput{
 		IndexName: aws.String("emailIdx"),
-		TableName: aws.String(os.Getenv("CS_DB")),
+		TableName: aws.String(os.Getenv("CLASSIFY_RENTALS_DB")),
 		KeyConditions: map[string]*dynamodb.Condition{
 			"email": {
 				ComparisonOperator: aws.String("EQ"),
@@ -138,7 +138,7 @@ const (
 
 func sendVerifyEmail(newAccount Item) {
 	sess, err := session.NewSession(&aws.Config{
-		Region: aws.String("af-south-1"),
+		Region: aws.String(os.Getenv("APP_REGION")),
 	})
 	if err != nil {
 		log.Fatalf("Error setting up session for ses: %s", err)
@@ -164,7 +164,7 @@ func sendVerifyEmail(newAccount Item) {
 			},
 			Subject: &ses.Content{
 				Charset: aws.String(CharSet),
-				Data:    aws.String("Welcome to CyberStaffing!"),
+				Data:    aws.String("Welcome to Classify Rentals!"),
 			},
 		},
 		Source: aws.String(Sender),

@@ -45,11 +45,11 @@ type SessionTokenDto struct {
 	Exp     int64  `json:"exp"`
 }
 
-var sharedKey = []byte("s3ccrethatmaycontainch@r$32chars")
+var sharedKey = []byte("s344rethaaaaycfftainch@r$32chars")
 
-const CIPHER_KEY = "s3ccrethatmaycontainch@r$32chars"
+const CIPHER_KEY = "s344rethaaaaycfftainch@r$32chars"
 
-var iv = []byte{15, 42, 27, 34, 84, 45, 54, 34, 86, 45, 84, 98, 63, 35, 16, 3}
+var iv = []byte{15, 42, 27, 34, 84, 45, 54, 34, 86, 45, 84, 98, 63, 35, 16, 13}
 
 // Response is of type APIGatewayProxyResponse since we're leveraging the
 // AWS Lambda Proxy Request functionality (default behavior)
@@ -73,7 +73,8 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (Respon
 
 	existingUser, err := svc.Query(&dynamodb.QueryInput{
 		IndexName: aws.String("emailIdx"),
-		TableName: aws.String(os.Getenv("CS_DB")),
+		TableName: aws.String(os.Getenv("CLASSIFY_RENTALS_DB")),
+
 		KeyConditions: map[string]*dynamodb.Condition{
 			"email": {
 				ComparisonOperator: aws.String(dynamodb.ComparisonOperatorEq),
@@ -232,5 +233,3 @@ func Decrypt(key, text string) string {
 
 	return string(plaintext)
 }
-
-// {"owner_id":"3c4072f167a8480e8bc27f3217ee7729","email":"hello@cyberstaffing.co.za","expires":"2021-06-19 18:15:53.8708928 +0000 UTC"}

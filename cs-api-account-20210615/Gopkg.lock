@@ -16,7 +16,7 @@
   version = "v1.24.0"
 
 [[projects]]
-  digest = "1:1ed1dae8b20e6fcf134cab3370f2dc14d3fcc5315d245cb8f3ccf06836ccd85f"
+  digest = "1:f5bf4c308f046a126d01e1ce75805860e359f94c3f954e69fa1cb87769ca0e89"
   name = "github.com/aws/aws-sdk-go"
   packages = [
     "aws",
@@ -65,8 +65,8 @@
     "service/sts/stsiface",
   ]
   pruneopts = ""
-  revision = "8c3b6c6a094d7abe9c99aff174cbfccfddf017d5"
-  version = "v1.38.62"
+  revision = "7dc747c229969202eef217662301040bd6f34e95"
+  version = "v1.39.4"
 
 [[projects]]
   digest = "1:13fe471d0ed891e8544eddfeeb0471fd3c9f2015609a1c000aefdedf52a19d40"
@@ -74,6 +74,14 @@
   packages = ["."]
   pruneopts = ""
   revision = "c2b33e84"
+
+[[projects]]
+  branch = "master"
+  digest = "1:e92e92f90eed320b89572197f2679e0107100e83ba076009713237e408a34ddf"
+  name = "github.com/mergermarket/go-pkcs7"
+  packages = ["."]
+  pruneopts = ""
+  revision = "153b18ea13c9b94f698070cadb23701e51a55b3e"
 
 [[projects]]
   digest = "1:7f569d906bdd20d906b606415b7d794f798f91a62fcfb6a4daa6d50690fb7a3f"
@@ -85,11 +93,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:848141632c781af60b6e0e5a5e1b3b7337fc6b18077431f311cf7fab5b834f64"
+  digest = "1:e74715cd78441bb306289348ed2ab3ec0c8ae12da813445a6091ad6336ba82b9"
   name = "golang.org/x/crypto"
   packages = ["pbkdf2"]
   pruneopts = ""
-  revision = "c07d793c2f9aacf728fe68cbd7acd73adbd04159"
+  revision = "5ff15b29337e062d850872081bcd9f4d784f4c25"
 
 [solve-meta]
   analyzer-name = "dep"
@@ -103,6 +111,7 @@
     "github.com/aws/aws-sdk-go/service/dynamodb",
     "github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute",
     "github.com/aws/aws-sdk-go/service/ses",
+    "github.com/mergermarket/go-pkcs7",
     "github.com/satori/go.uuid",
     "golang.org/x/crypto/pbkdf2",
   ]
