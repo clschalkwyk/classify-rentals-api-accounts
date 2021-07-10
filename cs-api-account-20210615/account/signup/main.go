@@ -123,7 +123,8 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (Respon
 		},
 	}
 
-	sendVerifyEmail(newAccount)
+	// not sending email just yet
+	//sendVerifyEmail(newAccount)
 	return resp, nil
 }
 
